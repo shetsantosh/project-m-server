@@ -70,6 +70,8 @@ const invoiceSchema = new mongoose.Schema({
         partyref: String,
     },
     loadingdetails: {
+        startstate: String, 
+        endstate: String, 
         startpoint: String,
         endpoint: String,
         transportationcost: Number,
