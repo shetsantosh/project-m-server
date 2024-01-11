@@ -2,8 +2,8 @@ const mongoose  = require('mongoose');
 
 const loadingSchema = new mongoose.Schema({
 
-    startpoint : String,
-    endpoint : String,
+    startstate: String,
+    endstate : String,
     rate : Number,
 });
 
