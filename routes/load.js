@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   const { startpoint, endpoint ,rate } = req.body;
 
   try {
-    const newLoading = new Loading({ startpoint, endpoint ,rate });
+    const newLoading = new Loading({ startstate, endstate ,rate });
     const savedLoading = await newLoading.save();
     res.status(201).json(savedLoading);
   } catch (err) {
