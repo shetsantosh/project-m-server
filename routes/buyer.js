@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 // POST: Create a new buyer
 router.post('/', async (req, res) => {
   const {
-    buyerid,
+    //buyerid,
     buyercompanyname,
     buyercompanygstno,
     buyercompanyaddress,
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
   try {
     const newBuyer = new Buyer({
-      buyerid,
+    //  buyerid,
       buyercompanyname,
       buyercompanygstno,
       buyercompanyaddress,
@@ -66,7 +66,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const {
-    buyerid,
+   // buyerid,
     buyercompanyname,
     buyercompanygstno,
     buyercompanyaddress,
@@ -78,7 +78,7 @@ router.put('/:id', async (req, res) => {
     const updatedBuyer = await Buyer.findByIdAndUpdate(
       id,
       {
-        buyerid,
+       // buyerid,
         buyercompanyname,
         buyercompanygstno,
         buyercompanyaddress,
