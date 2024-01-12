@@ -274,7 +274,21 @@
       <div>
         <div>
            
-          <p class="alignleft">
+  <p class="alignleft">
+         
+                
+                 
+            <b>BUYER</b> (if other than Consignee)<br>
+            <%= invoiceData.buyerdetails.buyercompanyname %> <br />
+            <%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
+            GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
+            State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>,
+            Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
+          
+          </p>
+         
+        </div>
+ <p class="alignright">
           
              
                 
@@ -288,22 +302,9 @@
             %>, Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
             <br />
           </p>
-        </div>
-
         <div>
           
-          <p class="alignright">
-         
-                
-                 
-            <b>BUYER</b> (if other than Consignee)<br>
-            <%= invoiceData.buyerdetails.buyercompanyname %> <br />
-            <%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
-            GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
-            State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>,
-            Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
-          
-          </p>
+        
         </div>
       </div>
 
@@ -407,7 +408,7 @@
             <th>S/N</th>
             <th>HSN/SAC</th>
             <th>TAXABLE VALUE</th>
-            <th colspan="6">INTEGRATED TAX</th>
+            <th colspan="6">TAX CALCULATION</th>
             <th>AMOUNT</th>
           </tr>
           <tr>
