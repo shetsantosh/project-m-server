@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 // POST: Create a new seller
 router.post('/', async (req, res) => {
   const {
-    sellerid,
+    //sellerid,
     sellercompanyname,
     sellercompanygstno,
     sellercompanyaddress,
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
   try {
     const newSeller = new Seller({
-      sellerid,
+    //  sellerid,
       sellercompanyname,
       sellercompanygstno,
       sellercompanyaddress,
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const {
-    sellerid,
+   // sellerid,
     sellercompanyname,
     sellercompanygstno,
     sellercompanyaddress,
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
     const updatedSeller = await Seller.findByIdAndUpdate(
       id,
       {
-        sellerid,
+      //  sellerid,
         sellercompanyname,
         sellercompanygstno,
         sellercompanyaddress,
