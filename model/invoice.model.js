@@ -72,6 +72,7 @@ const invoiceSchema = new mongoose.Schema({
     loadingdetails: {
         startstate: String, 
         endstate: String, 
+        rate: String,
         startpoint: String,
         endpoint: String,
         transportationcost: Number,
