@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { startpoint, endpoint ,rate } = req.body;
+  const { startstate, endstate, rate } = req.body;
 
   try {
     const newLoading = new Loading({ startstate, endstate ,rate });
@@ -24,12 +24,12 @@ router.post('/', async (req, res) => {
 });
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { startpoint, endpoint ,rate } = req.body;
+  const { startstate, endstate ,rate } = req.body;
 
   try {
     const updatedLoading = await Loading.findByIdAndUpdate(
       id,
-      { startpoint, endpoint ,rate },
+      { startstate, endstate ,rate },
       { new: true }
     );
 
