@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const buyerSchema = new mongoose.Schema({
-    buyerid: String,
+    //buyerid: String,
     buyercompanyname: String,
     buyercompanygstno: String,
     buyercompanyaddress: String,
