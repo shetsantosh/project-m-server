@@ -10,7 +10,7 @@ const companySchema = new mongoose.Schema({
     companycountry: String,
     companystate: String,
     companyofficeaddress: String,
-    companypincode: Number,
+    companypincode: String,
 });
 
 const Company = mongoose.model('Company', companySchema);
