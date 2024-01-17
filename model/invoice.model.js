@@ -8,7 +8,7 @@ const invoiceSchema = new mongoose.Schema({
         companygstno: String,
         companycontact: String, 
         companystate: String,
-        companystatecode: String, 
+        companypincode: String, 
         companyofficeaddress: String,
     },
     sellerdetails: {
