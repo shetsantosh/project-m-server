@@ -117,12 +117,12 @@
 				border-bottom: 2px solid black;
 				width: 45%;
 				font-size: 9px;
-				margin-top: 1.5%;
+				
 			}
 			.alignright {
 				display: flex;
 				margin-left: 55%;
-				margin-top: -16%;
+				margin-top: -13%;
 				border-bottom: 2px solid black;
 				font-size: 9px;
 				width: 45%;
@@ -269,17 +269,18 @@
 			<div >
 				<div>
 					<p class="alignleft">
-                                               <br />
+                                              
 						<b>BUYER</b> (if other than Consignee)<br />
 						<%= invoiceData.buyerdetails.buyercompanyname %> <br />
 						<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
 						GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
 						State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>,
 						Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
+                                                
 					</p>
 				</div>
 				<p class="alignright">
-                                        <br />
+                                      
 					<b>Consignee</b> <br />
 					<%= invoiceData.sellerdetails.sellercompanyname %> <br />
 					<%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
@@ -287,7 +288,7 @@
 					<br />
 					State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>,
 					Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
-					<br />
+					
 				</p>
 				
 			</div>
