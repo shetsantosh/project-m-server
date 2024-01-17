@@ -4,10 +4,10 @@ const Party = require('../model/party.model');
 
 router.get('/', async (req, res) => {
   try {
-    const parties = await Party.find();
+    const parties = await Party.find();  // Rename the variable here
     res.json(parties);
   } catch (err) {
-    res.status(500).json({ error: 'Error retrieving parties' });
+    res.status(500).json({ error: 'Error retrieving Party' });
   }
 });
 
