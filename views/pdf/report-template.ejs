@@ -225,7 +225,7 @@
 		</style>
 	</head>
 	<body>
-<p><b>ORIGINAL COPY</b></p>
+		<p><b>ORIGINAL COPY</b></p>
 		<div class="invoice">
 			<div id="background">
 				<p id="bg-text"><%= invoiceData.companydetails.companyname %></p>
@@ -266,21 +266,18 @@
 			</div>
 
 			<br />
-			<div >
+			<div>
 				<div>
 					<p class="alignleft">
-                                              
 						<b>BUYER</b> (if other than Consignee)<br />
 						<%= invoiceData.buyerdetails.buyercompanyname %> <br />
 						<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
 						GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
 						State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>,
 						Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
-                                                
 					</p>
 				</div>
 				<p class="alignright">
-                                      
 					<b>Consignee</b> <br />
 					<%= invoiceData.sellerdetails.sellercompanyname %> <br />
 					<%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
@@ -288,9 +285,7 @@
 					<br />
 					State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>,
 					Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
-					
 				</p>
-				
 			</div>
 
 			<div class="line-text">
@@ -313,8 +308,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% var interStateTax =
-					(invoiceData.sellerdetails.sellercompanystatecode ==
+					<% var interStateTax = (invoiceData.companydetails.companypincode ==
 					invoiceData.buyerdetails.buyercompanystatecode) ? false : true; %> <%
 					var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var
 					itemTaxSum = 0; %> <% var itemAmount = 0; %> <% if
