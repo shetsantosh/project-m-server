@@ -36,7 +36,8 @@ router.post('/', async (req, res) => {
 // PUT: Update a consigment by ID
 router.put('/:id', async (req, res) => {
 	const { id } = req.params;
-	const { itemname, itemquantity, itemhsn, itemprice, itemtaxrate } = req.body;
+	const { itemname, itemquantity, itemhsn, itemprice, itemtaxrate, itemdesc } =
+		req.body;
 
 	try {
 		const updatedConsignment = await Consignment.findByIdAndUpdate(
