@@ -14,8 +14,15 @@ router.get('/', async (req, res) => {
 
 // POST: Create a new consigment
 router.post('/', async (req, res) => {
-	const { itemname, itemquantity, itemhsn, itemprice, itemtaxrate, itemdesc } =
-		req.body;
+	const {
+		itemname,
+		itemquantity,
+		itemhsn,
+		itemprice,
+		itemtaxrate,
+		itemdesc,
+		itemweight,
+	} = req.body;
 
 	try {
 		const newConsignment = new Consignment({
@@ -25,6 +32,7 @@ router.post('/', async (req, res) => {
 			itemprice,
 			itemtaxrate,
 			itemdesc,
+			itemweight,
 		});
 		const savedConsignment = await newConsignment.save();
 		res.status(201).json(savedConsignment);
@@ -36,8 +44,15 @@ router.post('/', async (req, res) => {
 // PUT: Update a consigment by ID
 router.put('/:id', async (req, res) => {
 	const { id } = req.params;
-	const { itemname, itemquantity, itemhsn, itemprice, itemtaxrate, itemdesc } =
-		req.body;
+	const {
+		itemname,
+		itemquantity,
+		itemhsn,
+		itemprice,
+		itemtaxrate,
+		itemdesc,
+		itemweight,
+	} = req.body;
 
 	try {
 		const updatedConsignment = await Consignment.findByIdAndUpdate(
@@ -49,6 +64,7 @@ router.put('/:id', async (req, res) => {
 				itemprice,
 				itemtaxrate,
 				itemdesc,
+				itemweight,
 			},
 			{ new: true }
 		);
