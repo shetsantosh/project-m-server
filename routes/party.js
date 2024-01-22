@@ -35,7 +35,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 		// Iterate through the JSON data and create buyers
 		const createdParties = await Promise.all(
 			jsonData.map(async (partyData) => {
-				const newParty = new Buyer(partyData);
+				const newParty = new Party(partyData);
 				return await newParty.save();
 			})
 		);
