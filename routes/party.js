@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Party = require('../model/party.model');
 
+const multer = require('multer');
+const csv = require('csvtojson');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 router.get('/', async (req, res) => {
 	try {
 		const parties = await Party.find(); // Rename the variable here
