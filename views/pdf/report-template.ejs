@@ -227,9 +227,6 @@
 		</style>
 	</head>
 	<body>
-		<!-- <br />
-		<br /> -->
-
 		<p
 			style="
 				text-align: end;
@@ -238,7 +235,7 @@
 				font-size: 8px;
 			"
 		>
-			<b>DUPILCATE COPY</b>
+			<b>ORIGINAL COPY</b>
 		</p>
 		<div class="invoice">
 			<div id="background">
@@ -275,7 +272,7 @@
 					&nbsp;
 				</div>
 				<div class="qr">
-					<img src="<%= imagePath1 %>" alt="DUPILCATE QR" />
+					<img src="<%= imagePath %>" alt="" />
 				</div>
 			</div>
 
@@ -299,9 +296,7 @@
 					<br />
 					State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>,
 					Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
-					<br />
 				</p>
-				<div></div>
 			</div>
 
 			<div class="line-text">
@@ -525,6 +520,7 @@
 		</div>
 		<br />
 		<br />
+
 		<p
 			style="
 				text-align: end;
@@ -533,7 +529,7 @@
 				font-size: 8px;
 			"
 		>
-			<b>ORIGINAL COPY</b>
+			<b>DUPILCATE COPY</b>
 		</p>
 		<div class="invoice">
 			<div id="background">
@@ -569,8 +565,8 @@
 					moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %>
 					&nbsp;
 				</div>
-				<div class="qr" style="background-color: yellow">
-					<img src="<%= imagePath %>" alt="" />
+				<div class="qr">
+					<img src="<%= imagePath1 %>" alt="DUPILCATE QR" />
 				</div>
 			</div>
 
@@ -594,7 +590,9 @@
 					<br />
 					State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>,
 					Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
+					<br />
 				</p>
+				<div></div>
 			</div>
 
 			<div class="line-text">
