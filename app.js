@@ -17,7 +17,6 @@ var consignment = require('./routes/consignment');
 var vechicle = require('./routes/vechicle');
 var invoice = require('./routes/invoice');
 var download = require('./routes/download')
-var download2 = require('./routes/download2');
 var load = require('./routes/load');
 var state = require('./routes/state');
 var party = require('./routes/party')
@@ -57,7 +56,6 @@ app.use('/consignment', consignment);
 app.use('/vechicle', vechicle);
 app.use('/invoice', invoice);
 app.use('/download', download);
-app.use('/download2', download2);
 app.use('/load', load);
 app.use('/state', state);
 app.use('/party', party);
