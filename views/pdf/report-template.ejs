@@ -51,6 +51,10 @@
 				margin-top: -0.5%;
 				border-bottom: 2px solid black;
 			}
+
+                         .amtword{
+                              padding-bottom:7px;
+			 }
 			table {
 				width: 100%;
 				font-size: small;
@@ -396,7 +400,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="2"> <p class="amtword"><br /></p>AMOUNT CHARGEABLE (IN WORDS)  </td>
+						<td colspan="2"> <p ><br /></p> <div class="amtword"> AMOUNT CHARGEABLE (IN WORDS)</div>  </td>
 						<td colspan="4">
 							<%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
 						</td>
@@ -681,7 +685,14 @@
 						<td>-</td>
 						<% } %>
 					</tr>
-
+                                      <tr>
+                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+                                      </tr>
 					<tr>
 						<td></td>
 						<td>TOTAL</td>
