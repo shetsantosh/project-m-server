@@ -11,7 +11,7 @@ const { ToWords } = require('to-words');
 
 app.use(express.static('public'));
 
-var API = `https://project-m-client.vercel.app/`;
+var API = `https://project-m-client-gray.vercel.app/`;
 
 const toWords = new ToWords({
 	localeCode: 'en-IN',
@@ -60,7 +60,6 @@ exports.generatePdf = async (
 		// Generate QR code and get base64 string
 		const qrCodeData = `${API}pdf/${resultid}`;
 		const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
-		const qrCodeBase64_duplicate = await generateQRCodeBase64(qrCodeData);
 
 		// Render PDF HTML
 		ejs.renderFile(
@@ -68,7 +67,6 @@ exports.generatePdf = async (
 			{
 				invoiceData: result,
 				imagePath: qrCodeBase64,
-				imagePath1: qrCodeBase64_duplicate,
 				logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, {
 					encoding: 'base64',
 				})}`,
