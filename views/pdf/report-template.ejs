@@ -390,16 +390,16 @@
 						<td></td>
 						<td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
 					</tr>
-					<br />
+					
 					<tr>
-						<td colspan="2">AMOUNT CHARGEABLE (IN WORDS)</td>
+						<td colspan="2">AMOUNT CHARGEABLE (IN WORDS) <p><br /></p> </td>
 						<td colspan="4">
 							<%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-
+<br />
 			<table class="table2" style="font-size: 10px; border: 1px solid black">
 				<thead>
 					<tr>
