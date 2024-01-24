@@ -53,6 +53,7 @@
 			}
 
                          .amtword{
+                              padding-top:5px;
                               padding-bottom:7px;
 			 }
 			table {
@@ -498,7 +499,7 @@
 					</tr>
 					<br />
 					<tr>
-						<td colspan="3">AMOUNT CHARGEABLE(IN WORDS)</td>
+						<td colspan="3"> <div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
 						<td colspan="7">
 							<%= (toWords.convert(itemTaxSum)).toUpperCase()%>
 						</td>
@@ -703,7 +704,7 @@
 					</tr>
 					<br />
 					<tr>
-						<td colspan="2">AMOUNT CHARGEABLE (IN WORDS)</td>
+						<td colspan="2"> <div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
 						<td colspan="4">
 							<%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
 						</td>
@@ -801,7 +802,7 @@
 					</tr>
 					<br />
 					<tr>
-						<td colspan="3">AMOUNT CHARGEABLE(IN WORDS)</td>
+						<td colspan="3"> <div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
 						<td colspan="7">
 							<%= (toWords.convert(itemTaxSum)).toUpperCase()%>
 						</td>
