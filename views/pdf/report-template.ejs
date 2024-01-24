@@ -130,6 +130,10 @@
 				width: 45%;
 			}
 
+                        .amtword{
+                              margin-top: -5%;
+			}
+
 			td {
 				text-align: center;
 				font-size: 0.5rem;
@@ -139,6 +143,7 @@
 				border-collapse: collapse;
 				width: 100%;
 			}
+
 
 			table,
 			th,
@@ -337,7 +342,7 @@
 					</tr>
 					<% }); %> <% } %>
                                       <tr>
-                                          <td ><p>&nbsp;=</p></td>
+                                          <td ><p>&nbsp;</p></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
@@ -400,9 +405,9 @@
 					</tr>
 					
 					<tr>
-						<td colspan="2"> <p><br /></p>AMOUNT CHARGEABLE (IN WORDS)  </td>
+						<td colspan="2"> <p class="amtword"><br /></p>AMOUNT CHARGEABLE (IN WORDS)  </td>
 						<td colspan="4">
-							<p><br /></p><%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
+							<%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
 						</td>
 					</tr>
 				</tbody>
