@@ -326,8 +326,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% var interStateTax = (invoiceData.companydetails.companypincode ==
-					invoiceData.buyerdetails.buyercompanystatecode) ? true : false; %> <%
+					<% var interStateTax = (parseInt(invoiceData.companydetails.companypincode) ==
+					parseInt(invoiceData.buyerdetails.buyercompanystatecode)) ? true : false; %> <%
 					var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var
 					itemTaxSum = 0; %> <% var itemAmount = 0; %> <% if
 					(invoiceData.consignmentdetails.itemdetails.length > 0) { %> <%
@@ -631,8 +631,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% var interStateTax = (invoiceData.companydetails.companypincode ==
-					invoiceData.buyerdetails.buyercompanystatecode) ? true : false; %> <%
+					<% var interStateTax = (parseInt(invoiceData.companydetails.companypincode) ==
+					parseInt(invoiceData.buyerdetails.buyercompanystatecode)) ? true : false; %> <%
 					var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var
 					itemTaxSum = 0; %> <% var itemAmount = 0; %> <% if
 					(invoiceData.consignmentdetails.itemdetails.length > 0) { %> <%
