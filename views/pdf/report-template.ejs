@@ -327,7 +327,7 @@
 				</thead>
 				<tbody>
 					<% var interStateTax = (parseInt(invoiceData.companydetails.companypincode) ==
-					parseInt(invoiceData.buyerdetails.buyercompanystatecode)) ? true : false; %> <%
+					parseInt(invoiceData.buyerdetails.buyercompanystatecode)) ? false : true; %> <%
 					var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var
 					itemTaxSum = 0; %> <% var itemAmount = 0; %> <% if
 					(invoiceData.consignmentdetails.itemdetails.length > 0) { %> <%
