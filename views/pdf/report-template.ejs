@@ -105,7 +105,7 @@
 				display: flex;
 			}
 			.companyname {
-				font-size: 15px;
+				font-size: 10px;
 				font-weight: bold;
 				margin-left: 12%;
 				margin-top: -10%;
@@ -337,17 +337,11 @@
 					<tr>
 						<td><%= index+1 %></td>
 						<td><%= item.itemname %>
-<br />
-<%= item.itemdesc %>
-<br />
-<% if(interStateTax == false){ %>
-CGST
-<br />
-SGST 
- <% } else { %>
-IGST
-<% } %>
-</td>
+                                                           <br />
+                                                         <%= item.itemdesc %>
+                                                               <br />
+                                                         
+                                                                   </td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
@@ -362,8 +356,27 @@ IGST
 <% } %>
 </td>
 					</tr>
+
 					<% }); %> <% } %>
-                                     
+                                      <tr>
+                                          <td ></td>
+					  <td>
+                                                <% if(interStateTax == false){ %>
+                                                                   CGST
+                                                                     <br />
+                                                                    SGST 
+                                                               <% } else { %>
+                                                                     IGST
+                                                                  <% } %>
+                                           </td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+                                      </tr>
+
+                                  
+                                     <tr>
                                           <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
