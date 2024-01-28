@@ -350,7 +350,7 @@
 
 					<tr class="gst" style="border-top: none">
 						<td></td>
-						<% if(interStateTax == true){ %>
+						<% if(interStateTax == false){ %>
 <td>
 CGST</td> <% } else { %>
 						<td> </td>
@@ -358,7 +358,7 @@ CGST</td> <% } else { %>
 						<td></td>
 						<td></td>
 						<td></td>
-						<% if(interStateTax == true){ %>
+						<% if(interStateTax == false){ %>
 						<td> </td>
 						<% } else { %>
 						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
@@ -366,9 +366,9 @@ CGST</td> <% } else { %>
 					</tr>
 					<tr>
 						<td></td>
-						<% if(interStateTax == true){ %>
+						<% if(interStateTax == false){ %>
 <td>
-CGST</td> <% } else { %>
+SGST</td> <% } else { %>
 						<td> </td>
 						<% } %>
 						<td></td>
@@ -384,7 +384,7 @@ CGST</td> <% } else { %>
 						<td></td>
 						<% if(interStateTax == true){ %>
 <td>
-CGST</td> <% } else { %>
+IGST</td> <% } else { %>
 						<td> </td>
 						<% } %>
 						<td></td>
@@ -668,31 +668,43 @@ CGST</td> <% } else { %>
 
 					<tr class="gst" style="border-top: 1px solid #000">
 						<td></td>
-						<td>CGST</td>
+						<% if(interStateTax == false){ %>
+<td>
+CGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
 						<% if(interStateTax == true){ %>
-						<td>-</td>
+						<td> </td>
 						<% } else { %>
 						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
 						<% } %>
 					</tr>
 					<tr>
 						<td></td>
-						<td>SGST</td>
+						<% if(interStateTax == false){ %>
+<td>
+SGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
 						<% if(interStateTax == true){ %>
-						<td>-</td>
+						<td> </td>
 						<% } else { %>
 						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
 						<% } %>
 					</tr>
 					<tr class="igst">
 						<td></td>
-						<td>IGST</td>
+						<% if(interStateTax == true){ %>
+<td>
+IGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
