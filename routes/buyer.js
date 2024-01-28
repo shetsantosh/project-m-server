@@ -47,6 +47,18 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   try {
     // Use csvtojson to convert CSV buffer to JSON
     const jsonData = await csv().fromString(req.file.buffer.toString());
+    const processedBuyers = jsonData.map((buyerData) => {
+  // Capitalize state names
+  buyerData.buyercompanystatename = buyerData.buyercompanystatename.toUpperCase();
+
+  // Pad state codes with leading zeros if they are in the range 1 to 9
+  const stateCode = parseInt(buyerData.buyercompanystatecode);
+  if (!isNaN(stateCode) && stateCode >= 1 && stateCode <= 9) {
+    buyerData.buyercompanystatecode = stateCode.toString().padStart(2, '0');
+  }
+
+  return buyerData;
+});
 
     // Iterate through the JSON data and create buyers
     const createdBuyers = await Promise.all(
