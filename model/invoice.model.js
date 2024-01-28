@@ -34,6 +34,7 @@ const invoiceSchema = new mongoose.Schema({
 		itemdetails: [
 			{
 				itemname: String,
+				itemdesc: String,
 				itemquantity: Number,
 				itemhsn: String,
 				itemprice: Number,
