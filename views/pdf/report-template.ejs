@@ -31,7 +31,7 @@
 			}
 			.qr {
 				width: 45%;
-				margin-top: -22%;
+				margin-top: -20%;
 				margin-left: 55%;
 			}
 			.right {
@@ -392,7 +392,7 @@
 
                                   
                                      <tr>
-                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
+                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
@@ -649,46 +649,57 @@
 					%> <% itemQuantitySum += item.itemquantity %> <% itemAmount =
 					(item.itemprice * item.itemquantity) %> <% itemAmountSum += itemAmount
 					%> <% itemTaxSum += ((18/100 * itemAmount)) %>
-					<tr>
+					<tr  class="border-less" style="border:none">
 						<td><%= index+1 %></td>
 						<td><%= item.itemname %>
-<br />
-<%= item.itemdesc %>
-<br />
-<% if(interStateTax == false){ %>
-CGST
-<br />
-SGST 
- <% } else { %>
-IGST
-<% } %>
-</td>
+                                                           <br />
+                                                         <%= item.itemdesc %>
+                                                               <br />
+                                                         
+                                                                   </td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
 						<td><%= commaNumber((itemAmount).toFixed(2)) %>
-<br />
-<% if(interStateTax == false){ %>
-<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<br />
-<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<% } else { %>
-<%= commaNumber((itemTaxSum).toFixed(2)) %>
-<% } %>
+
+
 </td>
 					</tr>
-					<% }); %> <% } %>
 
-					
-					
-                                      <tr>
-                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
+					<% }); %> <% } %>
+                                      <tr class="border-less">
+                                          <td ></td>
+					  <td class="text-end">
+                                                <% if(interStateTax == false){ %>
+                                                                  OUTPUT CGST @ 9%  <br />ROUND OFF
+                                                                     <br />
+                                                                     OUTPUT SGST @ 9%  <br />ROUND OFF 
+                                                               <% } else { %>
+                                                                     OUTPUT IGST @ 18%  <br />ROUND OFF
+                                                                  <% } %>
+                                           </td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td><% if(interStateTax == false){ %>
+&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<br /><br />
+&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<% } else { %>
+<%= commaNumber((itemTaxSum).toFixed(2)) %>
+<% } %></td>
+                                      </tr>
+
+                                  
+                                     <tr>
+                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
                                       </tr>
+
 					<tr>
 						<td></td>
 						<td>TOTAL</td>
@@ -697,9 +708,9 @@ IGST
 						<td></td>
 						<td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
 					</tr>
-					<br />
+					
 					<tr>
-						<td colspan="2"> <div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
+						<td colspan="2">  <div class="amtword"> AMOUNT CHARGEABLE (IN WORDS)</div>  </td>
 						<td colspan="4">
 							<%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
 						</td>
