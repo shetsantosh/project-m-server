@@ -232,6 +232,14 @@
 			.table01 {
 				margin-top: -3%;
 			}
+
+                          .border-less{
+                                border:0px;
+			  }
+
+                           .text-end{
+                                   text-align: end;
+			   }
 		</style>
 	</head>
 	<body>
@@ -358,9 +366,9 @@
 					</tr>
 
 					<% }); %> <% } %>
-                                      <tr>
+                                      <tr class="border-less">
                                           <td ></td>
-					  <td>
+					  <td class="texr-end">
                                                 <% if(interStateTax == false){ %>
                                                                    CGST
                                                                      <br />
