@@ -339,64 +339,31 @@
 						<td><%= item.itemname %>
 <br />
 <%= item.itemdesc %>
+<br />
+<% if(interStateTax == false){ %>
+CGST
+<br />
+SGST 
+ <% } else { %>
+IGST
+<% } %>
 </td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
-						<td><%= commaNumber((itemAmount).toFixed(2)) %></td>
+						<td><%= commaNumber((itemAmount).toFixed(2)) %>
+<br />
+<% if(interStateTax == false){ %>
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<br />
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<% } else { %>
+<%= commaNumber((itemTaxSum).toFixed(2)) %>
+<% } %>
+</td>
 					</tr>
 					<% }); %> <% } %>
                                      
-
-					<tr class="gst" style="border-top: none">
-						<td></td>
-						<% if(interStateTax == false){ %>
-<td>
-CGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td> </td>
-						<% } else { %>
-						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
-						<% } %>
-					</tr>
-					<tr>
-						<td></td>
-						<% if(interStateTax == false){ %>
-<td>
-SGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td> </td>
-						<% } else { %>
-						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
-						<% } %>
-					</tr>
-					<tr class="igst">
-						<td></td>
-						<% if(interStateTax == true){ %>
-<td>
-IGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
-						<% } else { %>
-						<td> </td>
-						<% } %>
-					</tr>
-                                       <tr>
                                           <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
@@ -658,62 +625,34 @@ IGST</td> <% } else { %>
 						<td><%= index+1 %></td>
 						<td><%= item.itemname %>
 <br />
-<%= item.itemdesc %></td>
+<%= item.itemdesc %>
+<br />
+<% if(interStateTax == false){ %>
+CGST
+<br />
+SGST 
+ <% } else { %>
+IGST
+<% } %>
+</td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
-						<td><%= commaNumber((itemAmount).toFixed(2)) %></td>
+						<td><%= commaNumber((itemAmount).toFixed(2)) %>
+<br />
+<% if(interStateTax == false){ %>
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<br />
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<% } else { %>
+<%= commaNumber((itemTaxSum).toFixed(2)) %>
+<% } %>
+</td>
 					</tr>
 					<% }); %> <% } %>
 
-					<tr class="gst" style="border-top: 1px solid #000">
-						<td></td>
-						<% if(interStateTax == false){ %>
-<td>
-CGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td> </td>
-						<% } else { %>
-						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
-						<% } %>
-					</tr>
-					<tr>
-						<td></td>
-						<% if(interStateTax == false){ %>
-<td>
-SGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td> </td>
-						<% } else { %>
-						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
-						<% } %>
-					</tr>
-					<tr class="igst">
-						<td></td>
-						<% if(interStateTax == true){ %>
-<td>
-IGST</td> <% } else { %>
-						<td> </td>
-						<% } %>
-						<td></td>
-						<td></td>
-						<td></td>
-						<% if(interStateTax == true){ %>
-						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
-						<% } else { %>
-						<td>-</td>
-						<% } %>
-					</tr>
+					
+					
                                       <tr>
                                           <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
