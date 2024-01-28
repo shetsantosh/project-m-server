@@ -354,14 +354,8 @@
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
 						<td><%= commaNumber((itemAmount).toFixed(2)) %>
-<br />
-<% if(interStateTax == false){ %>
-<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<br />
-<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<% } else { %>
-<%= commaNumber((itemTaxSum).toFixed(2)) %>
-<% } %>
+
+
 </td>
 					</tr>
 
@@ -380,7 +374,13 @@
 					  <td></td>
 					  <td></td>
 					  <td></td>
-					  <td></td>
+					  <td><% if(interStateTax == false){ %>
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<br />
+<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<% } else { %>
+<%= commaNumber((itemTaxSum).toFixed(2)) %>
+<% } %></td>
                                       </tr>
 
                                   
