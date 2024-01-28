@@ -336,7 +336,10 @@
 					%> <% itemTaxSum += ((18/100 * itemAmount)) %>
 					<tr>
 						<td><%= index+1 %></td>
-						<td><%= item.itemname %></td>
+						<td><%= item.itemname %>
+<br />
+<%= item.itemdesc %>
+</td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
