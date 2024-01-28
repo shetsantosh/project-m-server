@@ -101,6 +101,18 @@ router.delete('/:id', async (req, res) => {
 router.post('/upload', upload.single('file'), async (req, res) => {
   try {
     const jsonData = await csv().fromString(req.file.buffer.toString());
+    const processedSellers = jsonData.map((sellerData) => {
+      // Capitalize state names
+      sellerData.sellercompanystatename = sellerData.sellercompanystatename.toUpperCase();
+
+      // Pad state codes with leading zeros if they are in the range 1 to 9
+      const stateCode = parseInt(sellerData.sellercompanystatecode);
+      if (!isNaN(stateCode) && stateCode >= 1 && stateCode <= 9) {
+        sellerData.sellercompanystatecode = stateCode.toString().padStart(2, '0');
+      }
+
+      return sellerData;
+    });
 
     const createdSellers = await Promise.all(
       jsonData.map(async (sellerData) => {
