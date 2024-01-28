@@ -348,40 +348,52 @@
 					<% }); %> <% } %>
                                      
 
-					<tr class="gst" style="border-top: 1px solid #000">
+					<tr class="gst" style="border-top: none">
 						<td></td>
-						<td>CGST</td>
+						<% if(interStateTax == true){ %>
+<td>
+CGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
 						<% if(interStateTax == true){ %>
-						<td>-</td>
+						<td> </td>
 						<% } else { %>
 						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
 						<% } %>
 					</tr>
 					<tr>
 						<td></td>
-						<td>SGST</td>
+						<% if(interStateTax == true){ %>
+<td>
+CGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
 						<% if(interStateTax == true){ %>
-						<td>-</td>
+						<td> </td>
 						<% } else { %>
 						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
 						<% } %>
 					</tr>
 					<tr class="igst">
 						<td></td>
-						<td>IGST</td>
+						<% if(interStateTax == true){ %>
+<td>
+CGST</td> <% } else { %>
+						<td> </td>
+						<% } %>
 						<td></td>
 						<td></td>
 						<td></td>
 						<% if(interStateTax == true){ %>
 						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
 						<% } else { %>
-						<td>-</td>
+						<td> </td>
 						<% } %>
 					</tr>
                                        <tr>
