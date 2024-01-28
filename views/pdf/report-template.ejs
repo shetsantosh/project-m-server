@@ -234,10 +234,9 @@
 				margin-top: -3%;
 			}
 
-                          .border-less{
-                                border:0px;
-			  }
-
+                          tr.border-less {
+                                   border: none;
+                           }
                            .text-end{
                                    text-align: end;
 			   }
@@ -343,7 +342,7 @@
 					%> <% itemQuantitySum += item.itemquantity %> <% itemAmount =
 					(item.itemprice * item.itemquantity) %> <% itemAmountSum += itemAmount
 					%> <% itemTaxSum += ((18/100 * itemAmount)) %>
-					<tr>
+					<tr  class="border-less">
 						<td><%= index+1 %></td>
 						<td><%= item.itemname %>
                                                            <br />
