@@ -150,10 +150,14 @@
 
 
 			table,
-			th,
-			td {
+			th{
 				border:1px solid black;
 			}
+
+th:not(:last-child),
+td:not(:last-child) {
+  border-right: 1px solid black;
+}
 
 
                         
