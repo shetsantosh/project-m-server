@@ -149,15 +149,18 @@
 			}
 
 
-			
-
-                        
 			table,
 			th,
 			td {
 				border:1px solid black;
 			}
 
+
+                        
+			.border-less {
+				border-top:2px solid #fff;
+                                border-bottom:2px solid #fff;
+			}
 
                  
 
@@ -352,35 +355,44 @@
                                                            <br />
                                                          <%= item.itemdesc %>
                                                                <br />
-                                                           <% if(interStateTax == false){ %>
-                                                                  OUTPUT CGST @ 9%  <br />ROUND OFF
-                                                                     <br />
-                                                                     OUTPUT SGST @ 9%  <br />ROUND OFF 
-                                                               <% } else { %>
-                                                                     OUTPUT IGST @ 18%  <br />ROUND OFF
-                                                                  <% } %>
                                                          
                                                                    </td>
 						<td><%= item.itemhsn %></td>
 						<td><%= item.itemquantity %></td>
 						<td><%= item.itemprice %></td>
 						<td><%= commaNumber((itemAmount).toFixed(2)) %>
-<% if(interStateTax == false){ %>
-&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<br /><br />
-&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
-<% } else { %>
-<%= commaNumber((itemTaxSum).toFixed(2)) %>
-<% } %>
+
 
 </td>
 					</tr>
 
 					<% }); %> <% } %>
-                                   
+                                      <tr class="border-less">
+                                          <td ></td>
+					  <td class="text-end">
+                                                <% if(interStateTax == false){ %>
+                                                                  OUTPUT CGST @ 9%  <br />ROUND OFF
+                                                                     <br />
+                                                                     OUTPUT SGST @ 9%  <br />ROUND OFF 
+                                                               <% } else { %>
+                                                                     OUTPUT IGST @ 18%  <br />ROUND OFF
+                                                                  <% } %>
+                                           </td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td><% if(interStateTax == false){ %>
+&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<br /><br />
+&nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %>
+<% } else { %>
+<%= commaNumber((itemTaxSum).toFixed(2)) %>
+<% } %></td>
+                                      </tr>
+
                                   
                                      <tr>
-                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
+                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /><br /><br /><br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
@@ -680,7 +692,7 @@
 
                                   
                                      <tr>
-                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
+                                          <td ><p>&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /> &nbsp;&nbsp;<br />&nbsp;&nbsp;<br /></p></td>
 					  <td></td>
 					  <td></td>
 					  <td></td>
