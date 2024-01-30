@@ -360,8 +360,8 @@
                             <% if(interStateTax == false){ %> 
 								<% taxAmount = (itemTaxSum/2).toFixed(2); %>
 								<% roundedOffTaxAmount = Math.round(taxAmount) %>
-								&nbsp;<%= taxAmount %> <br />
-                            &nbsp;<%= taxAmount %> <br />										
+								&nbsp;<%= commaNumber(taxAmount) %> <br />
+                            &nbsp;<%= commaNumber(taxAmount) %> <br />										
 							<% if(roundedOffTaxAmount < taxAmount){ %>
 										<% diffAmount = (taxAmount - roundedOffTaxAmount).toFixed(2); %>
 								(-)<%= diffAmount * 2 %>
@@ -376,7 +376,7 @@
 							 <% } else { %> 
 								<% taxAmount = (itemTaxSum).toFixed(2); %>
 								<% roundedOffTaxAmount = Math.round(taxAmount) %>
-								&nbsp;<%= taxAmount %> <br />
+								&nbsp;<%= commaNumber(taxAmount) %> <br />
 								<% if(roundedOffTaxAmount < taxAmount){ %>
 
                                     <% diffAmount = (taxAmount - roundedOffTaxAmount).toFixed(2); %>
@@ -659,8 +659,8 @@
                             <% if(interStateTax == false){ %> 
 								<% taxAmount = (itemTaxSum/2).toFixed(2); %>
 								<% roundedOffTaxAmount = Math.round(taxAmount) %>
-								&nbsp;<%= taxAmount %> <br />
-                            &nbsp;<%= taxAmount %> <br />										
+								&nbsp;<%= commaNumber(taxAmount) %> <br />
+                            &nbsp;<%= commaNumber(taxAmount) %> <br />										
 							<% if(roundedOffTaxAmount < taxAmount){ %>
 
                                 <% diffAmount = (taxAmount - roundedOffTaxAmount).toFixed(2); %>
@@ -676,7 +676,7 @@
 							 <% } else { %> 
 								<% taxAmount = (itemTaxSum).toFixed(2); %>
 								<% roundedOffTaxAmount = Math.round(taxAmount) %>
-								&nbsp;<%= taxAmount %> <br />
+								&nbsp;<%= commaNumber(taxAmount) %> <br />
 								<% if(roundedOffTaxAmount < taxAmount){ %>
                                     <% diffAmount = (taxAmount - roundedOffTaxAmount).toFixed(2); %>
                                     (-)<%= diffAmount %>
