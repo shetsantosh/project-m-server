@@ -130,7 +130,7 @@
             .alignright {
                 display: flex;
                 margin-left: 55%;
-                margin-top: -13.9%;
+                margin-top: -14.2%;
                 border-bottom: 2px solid black;
                 font-size: 9px;
                 width: 45%;
@@ -365,7 +365,7 @@
                     <tr>
                         <td>
                             <p>
-                               
+                                &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
@@ -379,7 +379,7 @@
                         <td></td>
                     </tr>
 
-                    <tr>
+                    <tr class="cus_tr">
                         <td></td>
                         <td>TOTAL</td>
                         <td></td>
@@ -388,7 +388,7 @@
                         <td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
                     </tr>
 
-                    <tr>
+                    <tr class="cus_tr">
                         <td colspan="2"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
                         <td colspan="4">
                             <%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
@@ -632,7 +632,7 @@
                     <tr>
                         <td>
                             <p>
-                                
+                                &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
@@ -646,7 +646,7 @@
                         <td></td>
                     </tr>
 
-                    <tr>
+                    <tr class="cus_tr">
                         <td></td>
                         <td>TOTAL</td>
                         <td></td>
@@ -655,7 +655,7 @@
                         <td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
                     </tr>
 
-                    <tr>
+                    <tr class="cus_tr">
                         <td colspan="2"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
                         <td colspan="4">
                             <%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %>
@@ -733,7 +733,7 @@
                     </tr>
                     <% }); %> <% } %>
                     <br />
-                    <tr>
+                    <tr class="cus_tr">
                         <td></td>
                         <td></td>
                         <td></td>
@@ -746,7 +746,7 @@
                         <td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
-                    <tr>
+                    <tr class="cus_tr">
                         <td colspan="3"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
                         <td colspan="7">
                             <%= (toWords.convert(itemTaxSum)).toUpperCase()%>
