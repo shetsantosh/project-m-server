@@ -130,7 +130,7 @@
             .alignright {
                 display: flex;
                 margin-left: 55%;
-                margin-top: -14.4%;
+                margin-top: -14.9%;
                 border-bottom: 2px solid black;
                 font-size: 9px;
                 width: 45%;
@@ -249,7 +249,7 @@
     </head>
     <body>
         <p style="text-align: end; margin-right: 14px; margin-bottom: 0; font-size: 8px;">
-            <b>ORIGINA COPY</b>
+            <b>ORIGINAL COPY</b>
         </p>
         <div class="invoice">
             <div id="background">
@@ -338,7 +338,7 @@
                         <td><%= item.itemhsn %></td>
                         <td><%= item.itemquantity %></td>
                         <td><%= item.itemprice %></td>
-                        <td><%= commaNumber((itemAmount).toFixed(2)) %></td>
+                        <td class="text-end"><%= commaNumber((itemAmount).toFixed(2)) %></td>
                     </tr>
 
                     <% }); %> <% } %>
@@ -355,7 +355,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
+                        <td  class="text-end">
                             <% if(interStateTax == false){ %> &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <br />
                             <br />
                             &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <% } else { %> <%= commaNumber((itemTaxSum).toFixed(2)) %> <% } %>
@@ -385,7 +385,7 @@
                         <td></td>
                         <td><%= itemQuantitySum %></td>
                         <td></td>
-                        <td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
+                        <td  class="text-end"><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
                     </tr>
 
                     <tr class="cus_tr">
@@ -434,7 +434,7 @@
                     <tr>
                         <td><%= index+1 %></td>
                         <td><%= item.itemhsn %></td>
-                        <td>
+                        <td  class="text-end">
                             <%= commaNumber((item.itemprice * item.itemquantity).toFixed(2)) %>
                         </td>
 
@@ -444,12 +444,12 @@
                         <td>-</td>
                         <td>-</td>
                         <td>18%</td>
-                        <td>
+                        <td  class="text-end">
                             <%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                         <% } else { %>
                         <td>9%</td>
-                        <td>
+                        <td  class="text-end">
                             <%= commaNumber((9/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                         <td>9%</td>
@@ -460,7 +460,7 @@
                         <td>-</td>
                         <% } %>
 
-                        <td>
+                        <td  class="text-end">
                             <%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                     </tr>
@@ -475,13 +475,13 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cus_td">TOTAL</td>
-                        <td class="cus_td"><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
+                        <td >TOTAL</td>
+                        <td ><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
                     <tr class="cus_tr">
-                        <td colspan="3" class="cus_td"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
-                        <td colspan="7" class="cus_td">
+                        <td colspan="3" ><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
+                        <td colspan="7" >
                             <%= (toWords.convert(itemTaxSum)).toUpperCase()%>
                         </td>
                     </tr>
