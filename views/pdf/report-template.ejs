@@ -238,11 +238,18 @@
             .text-end {
                 text-align: end;
             }
+
+           
+
+           .cus_tr{
+               border-top: 1px solid black
+           }
+            
         </style>
     </head>
     <body>
         <p style="text-align: end; margin-right: 14px; margin-bottom: 0; font-size: 8px;">
-            <b>ORIGINAL COPY</b>
+            <b>ORIGINA COPY</b>
         </p>
         <div class="invoice">
             <div id="background">
@@ -358,8 +365,7 @@
                     <tr>
                         <td>
                             <p>
-                                &nbsp;&nbsp;<br />
-                                &nbsp;&nbsp;<br />
+                               
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
@@ -460,7 +466,7 @@
                     </tr>
                     <% }); %> <% } %>
                     <br />
-                    <tr>
+                    <tr class="cus_tr">
                         <td></td>
                         <td></td>
                         <td></td>
@@ -469,13 +475,13 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>TOTAL</td>
-                        <td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
+                        <td class="cus_td">TOTAL</td>
+                        <td class="cus_td"><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
-                    <tr>
-                        <td colspan="3"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
-                        <td colspan="7">
+                    <tr class="cus_tr">
+                        <td colspan="3" class="cus_td"><div class="amtword">AMOUNT CHARGEABLE (IN WORDS)</div></td>
+                        <td colspan="7" class="cus_td">
                             <%= (toWords.convert(itemTaxSum)).toUpperCase()%>
                         </td>
                     </tr>
@@ -626,8 +632,7 @@
                     <tr>
                         <td>
                             <p>
-                                &nbsp;&nbsp;<br />
-                                &nbsp;&nbsp;<br />
+                                
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;<br />
