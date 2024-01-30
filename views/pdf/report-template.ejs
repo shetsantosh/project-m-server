@@ -130,7 +130,7 @@
             .alignright {
                 display: flex;
                 margin-left: 55%;
-                margin-top: -14.9%;
+                margin-top: -15%;
                 border-bottom: 2px solid black;
                 font-size: 9px;
                 width: 45%;
@@ -605,7 +605,7 @@
                         <td><%= item.itemhsn %></td>
                         <td><%= item.itemquantity %></td>
                         <td><%= item.itemprice %></td>
-                        <td><%= commaNumber((itemAmount).toFixed(2)) %></td>
+                        <td class="text-end"><%= commaNumber((itemAmount).toFixed(2)) %></td>
                     </tr>
 
                     <% }); %> <% } %>
@@ -622,7 +622,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
+                        <td class="text-end">
                             <% if(interStateTax == false){ %> &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <br />
                             <br />
                             &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <% } else { %> <%= commaNumber((itemTaxSum).toFixed(2)) %> <% } %>
@@ -652,7 +652,7 @@
                         <td></td>
                         <td><%= itemQuantitySum %></td>
                         <td></td>
-                        <td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
+                        <td class="text-end"><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
                     </tr>
 
                     <tr class="cus_tr">
@@ -701,7 +701,7 @@
                     <tr>
                         <td><%= index+1 %></td>
                         <td><%= item.itemhsn %></td>
-                        <td>
+                        <td class="text-end">
                             <%= commaNumber((item.itemprice * item.itemquantity).toFixed(2)) %>
                         </td>
 
@@ -711,23 +711,23 @@
                         <td>-</td>
                         <td>-</td>
                         <td>18%</td>
-                        <td>
+                        <td class="text-end">
                             <%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                         <% } else { %>
                         <td>9%</td>
-                        <td>
+                        <td class="text-end">
                             <%= commaNumber((9/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                         <td>9%</td>
-                        <td>
+                        <td class="text-end">
                             <%= commaNumber((9/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                         <td>-</td>
                         <td>-</td>
                         <% } %>
 
-                        <td>
+                        <td class="text-end">
                             <%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %>
                         </td>
                     </tr>
@@ -743,7 +743,7 @@
                         <td></td>
                         <td></td>
                         <td>TOTAL</td>
-                        <td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
+                        <td class="text-end"><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
                     <tr class="cus_tr">
