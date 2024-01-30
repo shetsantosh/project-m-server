@@ -345,20 +345,20 @@
                     <tr class="border-less">
                         <td></td>
                         <td class="text-end">
-                            <% if(interStateTax == false){ %> OUTPUT CGST @ 9% <br />
-                            ROUND OFF
+                            <% if(interStateTax == false){ %> OUTPUT CGST @ 9% 
+                            
                             <br />
                             OUTPUT SGST @ 9% <br />
                             ROUND OFF <% } else { %> OUTPUT IGST @ 18% <br />
                             ROUND OFF <% } %>
                         </td>
-                        <td></td>
+                        <td>ROUND OFF</td>
                         <td></td>
                         <td></td>
                         <td  class="text-end">
-                            <% if(interStateTax == false){ %> &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <br />
+                            <% if(interStateTax == false){ %> &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> 
                             <br />
-                            &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <% } else { %> <%= commaNumber((itemTaxSum).toFixed(2)) %> <% } %>
+                            &nbsp;<%= commaNumber((itemTaxSum/2).toFixed(2)) %> <% } else { %> <%= commaNumber((itemTaxSum).toFixed(2)) %> <% } %><br />(+)0.28
                         </td>
                     </tr>
 
