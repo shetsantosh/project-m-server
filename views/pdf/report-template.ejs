@@ -343,6 +343,8 @@
                     <tr class="border-less">
                         <td></td>
                         <td class="text-end">
+                            <br />
+                            <br />
                             <% if(interStateTax == false){ %> OUTPUT CGST @ 9% <br />
                             OUTPUT SGST @ 9% <br />
                             ROUND OFF <% } else { %> OUTPUT IGST @ 18% <br />
@@ -352,6 +354,9 @@
                         <td></td>
                         <td></td>
                         <td class="text-end">
+                            <%= itemAmountSum.toFixed(2) %>
+                            <br />
+                            <br />
                             <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2).toFixed(2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
                             &nbsp;<%= commaNumber(taxAmount) %> <br />
                             <% } else { %> <% taxAmount = (itemTaxSum).toFixed(2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
@@ -613,6 +618,8 @@
                     <tr class="border-less">
                         <td></td>
                         <td class="text-end">
+                            <br />
+                            <br />
                             <% if(interStateTax == false){ %> OUTPUT CGST @ 9% <br />
                             ROUND OFF
                             <br />
@@ -624,6 +631,9 @@
                         <td></td>
                         <td></td>
                         <td class="text-end">
+                            <%= itemAmountSum.toFixed(2) %>
+                            <br />
+                            <br />
                             <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2).toFixed(2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
                             &nbsp;<%= commaNumber(taxAmount) %> <br />
                             <% } else { %> <% taxAmount = (itemTaxSum).toFixed(2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
