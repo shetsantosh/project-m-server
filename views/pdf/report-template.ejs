@@ -416,8 +416,8 @@
                         <td><%= itemQuantitySum %></td>
                         <td></td>
                         <td  class="text-end">
-                            <% totalAmount = Math.round((itemAmountSum + itemTaxSum + parseFloat(adjustedValue)).toFixed(2)) %>
-                            <%= commaNumber((totalAmount)) %></td>
+                            <% totalAmount = Math.round(itemAmountSum + itemTaxSum + parseFloat(adjustedValue)) %>
+                            <%= commaNumber((totalAmount).toFixed(2)) %></td>
                     </tr>
 
                     <tr class="cus_tr">
