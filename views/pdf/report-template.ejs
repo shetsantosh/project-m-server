@@ -484,7 +484,7 @@
                         <td></td>
                         <td></td>
                         <td>TOTAL</td>
-                        <td><%= commaNumber(itemTaxSum) %></td>
+                        <td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
                     <tr class="cus_tr">
@@ -614,7 +614,7 @@
                         <td><%= item.itemhsn %></td>
                         <td><%= item.itemquantity %></td>
                         <td><%= item.itemprice %></td>
-                        <td class="text-end"><%= commaNumber((itemAmount)) %></td>
+                        <td class="text-end"><%= commaNumber(itemAmount.toFixed(2)) %></td>
                     </tr>
 
                     <% }); %> <% } %>
@@ -634,12 +634,12 @@
                         <td></td>
                         <td></td>
                         <td class="text-end">
-                            <%= commaNumber(itemAmountSum) %>
+                            <%= commaNumber(itemAmountSum.toFixed(2)) %>
                             <br />
                             <br />
-                            <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
-                            &nbsp;<%= commaNumber(taxAmount) %> <br />
-                            <% } else { %> &nbsp;<%= commaNumber(itemTaxSum) %> <br />
+                            <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
+                            &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
+                            <% } else { %> &nbsp;<%= commaNumber(itemTaxSum.toFixed(2)) %> <br />
                             <% } %> <% roundedOffItemAndTax = Math.round(itemAmountSum+itemTaxSum) %> <% if(roundedOffItemAndTax < (itemAmountSum+itemTaxSum)){ %> <% diffAmount = ((itemAmountSum+itemTaxSum) -
                             roundedOffItemAndTax); %> (-)<%= diffAmount %> <% adjustedValue = -diffAmount; %> <% } else { %> <% diffAmount = (roundedOffItemAndTax - (itemAmountSum+itemTaxSum));%> (+)<%= diffAmount %>
                             <% adjustedValue = diffAmount; %> <% } %>
@@ -670,7 +670,7 @@
                         <td><%= itemQuantitySum %></td>
                         <td></td>
                         <td class="text-end">
-                            <% totalAmount = (itemAmountSum + itemTaxSum + adjustedValue) %> <%= commaNumber(totalAmount) %>
+                            <% totalAmount = (itemAmountSum + itemTaxSum + adjustedValue) %> <%= commaNumber(totalAmount.toFixed(2)) %>
                         </td>
                     </tr>
 
@@ -762,7 +762,7 @@
                         <td></td>
                         <td></td>
                         <td>TOTAL</td>
-                        <td class="text-end"><%= commaNumber(itemTaxSum) %></td>
+                        <td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
                     </tr>
                     <br />
                     <tr class="cus_tr">
