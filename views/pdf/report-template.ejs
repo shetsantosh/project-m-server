@@ -359,12 +359,12 @@
                             <%= commaNumber(itemAmountSum.toFixed(2)) %>
                             <br />
                             <br />
-                            <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
+                            <% var taxAmount = 0; %> <% var temp = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
                             &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
                             <% } else { %> &nbsp;<%= commaNumber(itemTaxSum.toFixed(2)) %> <br />
                             <% } %> <% roundedOffItemAndTax = Math.round(itemAmountSum+itemTaxSum) %> <% if(roundedOffItemAndTax < (itemAmountSum+itemTaxSum)){ %> <% diffAmount = ((itemAmountSum+itemTaxSum) -
-                            roundedOffItemAndTax); %> (-)<%= diffAmount %> <% adjustedValue = -diffAmount; %> <% } else { %> <% diffAmount = (roundedOffItemAndTax - (itemAmountSum+itemTaxSum));%> (+)<%= diffAmount %>
-                            <% adjustedValue = diffAmount; %> <% } %>
+                            roundedOffItemAndTax); %> <% temp = Math.round(diffAmount*100)/100 %> (-)<%= temp %> <% adjustedValue = -temp; %> <% } else { %> <% diffAmount = (roundedOffItemAndTax - (itemAmountSum+itemTaxSum));%> <% temp = Math.round(diffAmount*100)/100 %> (+)<%= temp %>
+                            <% adjustedValue = temp; %> <% } %>
                         </td>
                     </tr>
 
@@ -637,12 +637,12 @@
                             <%= commaNumber(itemAmountSum.toFixed(2)) %>
                             <br />
                             <br />
-                            <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
-                            &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
-                            <% } else { %> &nbsp;<%= commaNumber(itemTaxSum.toFixed(2)) %> <br />
-                            <% } %> <% roundedOffItemAndTax = Math.round(itemAmountSum+itemTaxSum) %> <% if(roundedOffItemAndTax < (itemAmountSum+itemTaxSum)){ %> <% diffAmount = ((itemAmountSum+itemTaxSum) -
-                            roundedOffItemAndTax); %> (-)<%= diffAmount %> <% adjustedValue = -diffAmount; %> <% } else { %> <% diffAmount = (roundedOffItemAndTax - (itemAmountSum+itemTaxSum));%> (+)<%= diffAmount %>
-                            <% adjustedValue = diffAmount; %> <% } %>
+                            <% var taxAmount = 0; %> <% var temp = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2); %> &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
+                                &nbsp;<%= commaNumber(taxAmount.toFixed(2)) %> <br />
+                                <% } else { %> &nbsp;<%= commaNumber(itemTaxSum.toFixed(2)) %> <br />
+                                <% } %> <% roundedOffItemAndTax = Math.round(itemAmountSum+itemTaxSum) %> <% if(roundedOffItemAndTax < (itemAmountSum+itemTaxSum)){ %> <% diffAmount = ((itemAmountSum+itemTaxSum) -
+                                roundedOffItemAndTax); %> <% temp = Math.round(diffAmount*100)/100 %> (-)<%= temp %> <% adjustedValue = -temp; %> <% } else { %> <% diffAmount = (roundedOffItemAndTax - (itemAmountSum+itemTaxSum));%> <% temp = Math.round(diffAmount*100)/100 %> (+)<%= temp %>
+                                <% adjustedValue = temp; %> <% } %>
                         </td>
                     </tr>
 
