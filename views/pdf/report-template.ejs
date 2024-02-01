@@ -355,7 +355,7 @@
                         <td></td>
                         <td></td>
                         <td class="text-end">
-                            <%= itemAmountSum.toFixed(2) %>
+                            <%= commaNumber(itemAmountSum.toFixed(2)) %>
                             <br />
                             <br />
                             <% var taxAmount = 0; %> <% var diffAmount = 0; %> <% var roundedOffItemAndTax = 0; %> <% if(interStateTax == false){ %> <% taxAmount = (itemTaxSum/2).toFixed(2); %> &nbsp;<%= commaNumber(taxAmount) %> <br />
