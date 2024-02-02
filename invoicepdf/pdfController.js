@@ -9,6 +9,7 @@ const moment = require('moment');
 const commaNumber = require('comma-number');
 const { ToWords } = require('to-words');
 
+
 app.use(express.static('public'));
 
 var API = `https://project-m-client-gray.vercel.app/`;
@@ -37,9 +38,10 @@ exports.generatePdf = async (
 	info = { filename: 'pdf_file', format: 'A4' },
 	result,
 	callback
+
 ) => {
 	const resultid = result._id;
-	const fileId = result._id + '.pdf';
+	const fileId = `${result._id}.pdf`;
 	const targetLocation = `./public/download/${fileId}`;
 	const imageLocation = `./public/qrImages/`;
 	const logoLocation = `./public/logo/logo.jpg`;
