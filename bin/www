@@ -15,11 +15,18 @@ var https = require('https');
 var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
+// Creating object of key and certificate 
+// for SSL 
+const options = { 
+  key: fs.readFileSync("private.key"), 
+  cert: fs.readFileSync("certificate.crt"), 
+}; 
+
+
 /**
  * Create HTTP server.
  */
-
-var server = https.createServer(app);
+var server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
