@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('server:server');
 var https = require('https');
 
+// Requiring file system to use local files 
+const fs = require("fs"); 
 /**
  * Get port from environment and store in Express.
  */
