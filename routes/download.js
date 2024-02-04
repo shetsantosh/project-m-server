@@ -2,6 +2,7 @@ const custom = require('../invoicepdf/pdfController');
 const express = require('express');
 const router = express.Router();
 const Invoice = require('../model/invoice.model');
+const fs = require('fs');
 
 
 router.put('/pdf/:id', async(req, res) => {

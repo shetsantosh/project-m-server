@@ -41,14 +41,15 @@ exports.generatePdf = async (
 	result,
 	callback
 ) => {
-	const filename = result._id;
+	const resultId = result._id;
+	const filename = resultId +'.pdf';
 	const logoLocation = `./public/logo/logo.jpg`;
 	const publicFolder = path.join(__dirname, '..');
 	const logoPath = path.join(publicFolder, logoLocation);
 
 	try {
 		// Generate QR code and get base64 string
-		const qrCodeData = `${API}pdf/${filename}`;
+		const qrCodeData = `${API}pdf/${resultId}`;
 		const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
 
 		// Render PDF HTML
@@ -78,6 +79,8 @@ exports.generatePdf = async (
 					};
 
 					pdf.create(html, options).toStream(function(err, stream) {
+						console.log(filename);
+						stream.pipe(fs.createWriteStream(filename));
 						if (err) {throw new Error(err);	}
 						else {				
 							callback(uploadToS3(stream, filename));
@@ -105,7 +108,8 @@ function uploadToS3 (body, filename) {
 	  Body: body,
 	  ACL: 'public-read',
 	  Bucket: process.env.AWS_BUCKET_NAME,
-	  Key: filename
+	  Key: filename,
+	  ContentType: 'application/pdf',
 	};
 	s3.upload(params, (err, data) => {
 		if(err) {
