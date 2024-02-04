@@ -15,7 +15,7 @@ var AWS = require('aws-sdk');
 
 app.use(express.static('public'));
 
-var API = `https://project-m-client-gray.vercel.app/`;
+var API = `https://www.thegapindustries.com/`;
 
 const toWords = new ToWords({
 	localeCode: 'en-IN',
@@ -85,14 +85,10 @@ exports.generatePdf = async (
 					};
 
 					pdf.create(html, options).toStream(function(err,stream) {
-						// console.log(targetLocation);
 						stream.pipe(fs.createWriteStream(filename));
-						// if (err) return console.log(err);	
-						// fs.readFile(targetLocation, (err, fileBody) => {
 							if(err) {
 								console.log("Error", err);
 							} else {
-								// callback(uploadToS3(stream, filename));	
 								AWS.config.update({
 									accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 									secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
@@ -127,10 +123,6 @@ exports.generatePdf = async (
 		// if (callback) callback(null, error);
 	}
 };
-
-function uploadToS3 (body, filename) {
-
-  }
 
 const generateQRCodeBase64 = async (data) => {
 	try {
