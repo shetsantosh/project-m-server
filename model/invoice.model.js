@@ -84,6 +84,9 @@ const invoiceSchema = new mongoose.Schema({
 		endpoint: String,
 		transportationcost: Number,
 	},
+	pdfUrl: {
+		type : String
+	}
 });
 
 const Invoice = mongoose.model('Invoice', invoiceSchema);

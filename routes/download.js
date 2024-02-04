@@ -2,39 +2,36 @@ const custom = require('../invoicepdf/pdfController');
 const express = require('express');
 const router = express.Router();
 const Invoice = require('../model/invoice.model');
-const fs = require('fs');
-const path = require('path');
 
-router.get('/:id', async (req, res) => {
+
+router.put('/pdf/:id', async(req, res) => {
     var invoiceId = req.params.id;
-
     try {
-        const result = await Invoice.findById(invoiceId);
+        const invoice = await Invoice.findById(invoiceId);
 
-        // Throw error if no result
-        if (!result) {
-            throw { name: 'Error' };
+        if (!invoice) {
+            return res.status(404).json({msg: 'Invoice not found'});
         }
 
-        // Continue process if result is returned
+      // Continue process if result is returned
         await custom.generatePdf(
-            { filename: invoiceId.toString(), format: 'A4' },
-            result,
-            async (fileLocation) => {
-                console.log('File location:', fileLocation);
+            invoice,
+            async (data) => {
+                console.log('S3 object data:', data);
 
-                return res.download(fileLocation, (error) => {
-                    if (error) {
-                        res.status(500).json({
-                            success: false,
-                            result: null,
-                            message: "Couldn't find file",
-                            error: error.message,
-                        });
-                    }
-                });
-            }
-        );
+                invoice.pdfUrl = data.Location;
+                await invoice.save()
+                .then(result => {
+                    res.status(200).json({
+                        success: true,
+                        message : "success",
+                        result: result
+                    });
+                })
+                .catch(err =>{
+                    res.send({message: err})
+                })
+            });
     } catch (error) {
         // Handle errors
         if (error.name == 'Error') {
@@ -61,26 +58,6 @@ router.get('/:id', async (req, res) => {
                 message: error.message,
             });
         }
-    }
-});
-
-router.get('/pdf/:id', async (req, res) => {
-    const invoiceId = req.params.id;
-    const fileLocation = path.join(__dirname, `../public/download/${invoiceId}.pdf`);
-
-    // Check if the file exists
-    if (fs.existsSync(fileLocation)) {
-        // Read the PDF file and send it as a response
-        const fileStream = fs.createReadStream(fileLocation);
-        fileStream.pipe(res);
-    } else {
-        // If the file does not exist, send a 404 response
-        res.status(404).json({
-            success: false,
-            result: null,
-            message: "Couldn't find file",
-            error: 'File not found',
-        });
     }
 });
 

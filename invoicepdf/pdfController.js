@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
@@ -8,6 +10,7 @@ const fs = require('fs');
 const moment = require('moment');
 const commaNumber = require('comma-number');
 const { ToWords } = require('to-words');
+var AWS = require('aws-sdk');
 
 
 app.use(express.static('public'));
@@ -35,32 +38,17 @@ const toWords = new ToWords({
 });
 
 exports.generatePdf = async (
-	info = { filename: 'pdf_file', format: 'A4' },
 	result,
 	callback
-
 ) => {
-	const resultid = result._id;
-	const fileId = `${result._id}.pdf`;
-	const targetLocation = `./public/download/${fileId}`;
-	const imageLocation = `./public/qrImages/`;
+	const filename = result._id;
 	const logoLocation = `./public/logo/logo.jpg`;
 	const publicFolder = path.join(__dirname, '..');
 	const logoPath = path.join(publicFolder, logoLocation);
 
 	try {
-		// If PDF already exists, delete it and create a new PDF
-		if (fs.existsSync(targetLocation)) {
-			fs.unlinkSync(targetLocation);
-		}
-
-		const qrCodeFilename = result.invoicedetails.invoiceno + '.png';
-		const currentDirectory = __dirname;
-		const publicFolder = path.join(currentDirectory, '..');
-		const imagePath = path.join(publicFolder, imageLocation, qrCodeFilename);
-
 		// Generate QR code and get base64 string
-		const qrCodeData = `${API}pdf/${resultid}`;
+		const qrCodeData = `${API}pdf/${filename}`;
 		const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
 
 		// Render PDF HTML
@@ -76,14 +64,10 @@ exports.generatePdf = async (
 				commaNumber: commaNumber,
 				toWords: toWords,
 			},
-			function (err, result) {
-				if (result) {
-					const html2 = result;
-					let options2 = {
-						// "height": "12.25in",
-						// "width": "11.25in",
-						// "header": { "height": "0mm" },
-						// "footer": { "height": "0mm" },
+			function (err, res) {
+				if (res) {
+					const html = res;
+					let options = {
 						format: 'A4',
 						childProcessOptions: {
 							env: {
@@ -92,26 +76,43 @@ exports.generatePdf = async (
 						},
 					};
 
-					pdf.create(html2, options2).toFile(targetLocation, function (error) {
-						if (error) {
-							console.error('Error creating PDF:', error);
-							if (callback) callback(null, error);
-						} else {
-							console.log('PDF created successfully.');
-							if (callback) callback(targetLocation);
-						}
+					pdf.create(html, options).toStream(function(err, stream) {
+						if (err) throw new Error(err);						
+							callback(uploadToS3(stream, filename));
 					});
 				} else {
-					console.error('An error occurred during render ejs:', err);
-					if (callback) callback(null, err);
+					return console.error('An error occurred during render ejs:', err);
 				}
-			}
-		);
-	} catch (error) {
-		console.error('Error:', error);
-		if (callback) callback(null, error);
+			});
+	} catch (err) {
+		throw new Error(err);
+		// if (callback) callback(null, error);
 	}
 };
+
+function uploadToS3 (body, filename) {
+	AWS.config.update({
+	  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+	  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+	});
+  
+	var s3 = new AWS.S3();
+  
+	var params = {
+	  Body: body,
+	  ACL: 'public-read',
+	  Bucket: process.env.AWS_BUCKET_NAME,
+	  Key: filename
+	};
+	s3.upload(params, (err, data) => {
+		if(err) {
+			res.status(500).send({"err":err})  // if we get any error while uploading, error message will be returned.
+		}
+		  // If not then below code will be executed
+		console.log(data)   
+		return data;
+	});
+  }
 
 const generateQRCodeBase64 = async (data) => {
 	try {
