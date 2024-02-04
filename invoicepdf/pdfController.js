@@ -77,11 +77,11 @@ exports.generatePdf = async (
 					const html = res;
 					let options = {
 						format: 'A4',
-						childProcessOptions: {
-							env: {
-								OPENSSL_CONF: '/dev/null',
-							},
-						},
+						// childProcessOptions: {
+						// 	env: {
+						// 		OPENSSL_CONF: '/dev/null',
+						// 	},
+						// },
 					};
 
 					pdf.create(html, options).toFile(targetLocation, function(err) {
