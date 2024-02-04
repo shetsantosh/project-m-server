@@ -19,16 +19,16 @@ app.set('port', port);
 
 // Creating object of key and certificate 
 // for SSL 
-const options = { 
-  key: fs.readFileSync("private.key"), 
-  cert: fs.readFileSync("certificate.crt"), 
-}; 
+// const options = { 
+//   key: fs.readFileSync("private.key"), 
+//   cert: fs.readFileSync("certificate.crt"), 
+// }; 
 
 
 /**
  * Create HTTP server.
  */
-var server = http.createServer(options, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
