@@ -66,7 +66,7 @@ exports.generatePdf = async (
 				toWords: toWords,
 			},
 			function (err, res) {
-				console.log("pdfcontroller "+res);
+				// console.log("pdfcontroller "+res);
 				if (res) {
 					const html = res;
 					let options = {
@@ -81,7 +81,9 @@ exports.generatePdf = async (
 					pdf.create(html, options).toStream(function(err, stream) {
 						console.log(filename);
 						stream.pipe(fs.createWriteStream(filename));
-						if (err) {throw new Error(err);	}
+						if (err) {
+							console.log(filename);
+							throw new Error(err);	}
 						else {				
 							callback(uploadToS3(stream, filename));
 						}
