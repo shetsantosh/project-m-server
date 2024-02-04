@@ -84,18 +84,17 @@ exports.generatePdf = async (
 						},
 					};
 
-					pdf.create(html, options).toFile(targetLocation, function(err) {
-						console.log(targetLocation);
-						// stream.pipe(fs.createWriteStream(filename));
-						if (err) return console.log(err);	
-						fs.readFile(targetLocation, (err, fileBody) => {
-							console.log(fileBody);
+					pdf.create(html, options).toStream(function(err,stream) {
+						// console.log(targetLocation);
+						stream.pipe(fs.createWriteStream(filename));
+						// if (err) return console.log(err);	
+						// fs.readFile(targetLocation, (err, fileBody) => {
 							if(err) {
 								console.log("Error", err);
 							} else {
-								callback(uploadToS3(fileBody, filename));					
+								callback(uploadToS3(stream, filename));					
 							}
-						})							
+						// })							
 					});
 				} else {
 					return console.error('An error occurred during render ejs:', err);
