@@ -65,6 +65,7 @@ exports.generatePdf = async (
 				toWords: toWords,
 			},
 			function (err, res) {
+				console.log("pdfcontroller "+res);
 				if (res) {
 					const html = res;
 					let options = {
@@ -77,8 +78,10 @@ exports.generatePdf = async (
 					};
 
 					pdf.create(html, options).toStream(function(err, stream) {
-						if (err) throw new Error(err);						
+						if (err) {throw new Error(err);	}
+						else {				
 							callback(uploadToS3(stream, filename));
+						}
 					});
 				} else {
 					return console.error('An error occurred during render ejs:', err);
