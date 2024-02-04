@@ -89,6 +89,7 @@ exports.generatePdf = async (
 						// stream.pipe(fs.createWriteStream(filename));
 						if (err) return console.log(err);	
 						fs.readFile(targetLocation, (err, fileBody) => {
+							console.log(fileBody);
 							if(err) {
 								console.log("Error", err);
 							} else {
