@@ -92,7 +92,29 @@ exports.generatePdf = async (
 							if(err) {
 								console.log("Error", err);
 							} else {
-								callback(uploadToS3(stream, filename));					
+								// callback(uploadToS3(stream, filename));	
+								AWS.config.update({
+									accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+									secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+								  });
+								
+								  var s3 = new AWS.S3();
+								
+								  var params = {
+									Body: stream,
+									ACL: 'public-read',
+									Bucket: process.env.AWS_BUCKET_NAME,
+									Key: filename,
+									ContentType: 'application/pdf',
+								  };
+								  s3.upload(params, (err, data) => {
+									  if(err) {
+										  res.status(500).send({"err":err})  // if we get any error while uploading, error message will be returned.
+									  }
+										// If not then below code will be executed
+									  console.log(data)   
+									   callback(data);
+								  });				
 							}
 						// })							
 					});
@@ -107,28 +129,7 @@ exports.generatePdf = async (
 };
 
 function uploadToS3 (body, filename) {
-	AWS.config.update({
-	  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-	  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-	});
-  
-	var s3 = new AWS.S3();
-  
-	var params = {
-	  Body: body,
-	  ACL: 'public-read',
-	  Bucket: process.env.AWS_BUCKET_NAME,
-	  Key: filename,
-	  ContentType: 'application/pdf',
-	};
-	s3.upload(params, (err, data) => {
-		if(err) {
-			res.status(500).send({"err":err})  // if we get any error while uploading, error message will be returned.
-		}
-		  // If not then below code will be executed
-		console.log(data)   
-		return data;
-	});
+
   }
 
 const generateQRCodeBase64 = async (data) => {
