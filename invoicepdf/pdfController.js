@@ -46,6 +46,12 @@ exports.generatePdf = async (
 	const logoLocation = `./public/logo/logo.jpg`;
 	const publicFolder = path.join(__dirname, '..');
 	const logoPath = path.join(publicFolder, logoLocation);
+	const targetLocation = `./public/download/${filename}`;
+
+	  // if PDF already exist, then delete it and create new PDF
+	  if (fs.existsSync(targetLocation)) {
+		fs.unlinkSync(targetLocation);
+	  }
 
 	try {
 		// Generate QR code and get base64 string
@@ -78,15 +84,17 @@ exports.generatePdf = async (
 						},
 					};
 
-					pdf.create(html, options).toBuffer(function(err, buffer) {
-						console.log(filename);
+					pdf.create(html, options).toFile(targetLocation, function(err) {
+						console.log(targetLocation);
 						// stream.pipe(fs.createWriteStream(filename));
-						if (err) {
-							console.log(filename);
-							throw new Error(err);	}
-						else {				
-							callback(uploadToS3(buffer, filename));
-						}
+						if (err) return console.log(err);	
+						fs.readFile(targetLocation, (err, fileBody) => {
+							if(err) {
+								console.log("Error", err);
+							} else {
+								callback(uploadToS3(fileBody, filename));					
+							}
+						})							
 					});
 				} else {
 					return console.error('An error occurred during render ejs:', err);
