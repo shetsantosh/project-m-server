@@ -6,7 +6,7 @@
 
 var app = require('../app');
 var debug = require('debug')('server:server');
-var http = require('https');
+var http = require('http');
 
 // Requiring file system to use local files 
 const fs = require("fs"); 
