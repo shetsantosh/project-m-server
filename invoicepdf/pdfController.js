@@ -78,14 +78,14 @@ exports.generatePdf = async (
 						},
 					};
 
-					pdf.create(html, options).toStream(function(err, stream) {
+					pdf.create(html, options).toBuffer(function(err, buffer) {
 						console.log(filename);
-						stream.pipe(fs.createWriteStream(filename));
+						// stream.pipe(fs.createWriteStream(filename));
 						if (err) {
 							console.log(filename);
 							throw new Error(err);	}
 						else {				
-							callback(uploadToS3(stream, filename));
+							callback(uploadToS3(buffer, filename));
 						}
 					});
 				} else {
