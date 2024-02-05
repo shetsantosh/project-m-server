@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Invoice = require('../model/invoice.model');
+const custom = require('../invoicepdf/pdfController');
 
 // GET: Retrieve all invoices
 router.get('/', async (req, res) => {
@@ -39,6 +40,7 @@ router.post('/', async (req, res) => {
 			}, // Set invoiceno in the schema
 			boardingdetails,
 			loadingdetails,
+			pdfUrl: undefined
 		});
 
 		const savedInvoice = await newInvoice.save();
@@ -51,11 +53,24 @@ router.post('/', async (req, res) => {
 		savedInvoice.invoicedetails.invoiceno = `${currentYear}${(counter + 1)
 			.toString()
 			.padStart(7, '0')}`;
-		await savedInvoice.save();
 
-		res.status(201).json(savedInvoice);
+		// Generate PDF and update S3 URL
+        await custom.generatePdf(
+            savedInvoice,
+            async (data) => {
+                console.log('S3 object data:', data);
+
+                savedInvoice.pdfUrl = data.Location;
+                await savedInvoice.save()
+                .then(result => {
+                    res.status(201).json(result);
+                })
+                .catch(err =>{
+                    res.status(400).json({ error: 'Error creating invoice ' +err});
+                })
+            });	
 	} catch (err) {
-		res.status(400).json({ error: 'Error creating invoice' });
+		res.status(400).json({ error: 'Error creating invoice ' +err });
 	}
 });
 
@@ -65,6 +80,14 @@ router.put('/:id', async (req, res) => {
 	const updatedInvoiceData = req.body;
 
 	try {
+    // Generate PDF and update S3 URL
+	  await custom.generatePdf(
+		updatedInvoiceData,
+		async (data) => {
+			console.log('S3 object data:', data);
+			updatedInvoiceData.pdfUrl = data.Location;
+		});
+
 		const updatedInvoice = await Invoice.findByIdAndUpdate(
 			id,
 			updatedInvoiceData,

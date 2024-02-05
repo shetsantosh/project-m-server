@@ -46,12 +46,6 @@ exports.generatePdf = async (
 	const logoLocation = `./public/logo/logo.jpg`;
 	const publicFolder = path.join(__dirname, '..');
 	const logoPath = path.join(publicFolder, logoLocation);
-	const targetLocation = `./public/download/${filename}`;
-
-	  // if PDF already exist, then delete it and create new PDF
-	  if (fs.existsSync(targetLocation)) {
-		fs.unlinkSync(targetLocation);
-	  }
 
 	try {
 		// Generate QR code and get base64 string
