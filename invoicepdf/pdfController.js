@@ -104,7 +104,7 @@ exports.generatePdf = async (result, callback) => {
                 console.log(data);
 
                 s3.getSignedUrl("getObject", params, (err, signedUrl) => {
-                  res.status(500).send({ err: err });
+                  if (err) res.status(500).send({ err: err });
                   console.log(signedUrl);
                 });
                 callback(data);
