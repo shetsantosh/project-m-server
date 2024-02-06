@@ -75,6 +75,7 @@ const invoiceSchema = new mongoose.Schema({
 		dateofloading: Date,
 		watermark: String,
 		partyref: String,
+		partyrate: Number,
 	},
 	loadingdetails: {
 		startstate: String,
@@ -85,8 +86,8 @@ const invoiceSchema = new mongoose.Schema({
 		transportationcost: Number,
 	},
 	pdfUrl: {
-		type : String
-	}
+		type: String,
+	},
 });
 
 const Invoice = mongoose.model('Invoice', invoiceSchema);
