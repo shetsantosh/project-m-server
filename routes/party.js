@@ -17,10 +17,10 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-	const { partyname, partyrefno } = req.body;
+	const { partyname, partyrefno, partyrate } = req.body;
 
 	try {
-		const newParty = new Party({ partyname, partyrefno });
+		const newParty = new Party({ partyname, partyrefno, partyrate });
 		const savedParty = await newParty.save();
 		res.status(201).json(savedParty);
 	} catch (err) {
@@ -49,12 +49,12 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
 router.put('/:id', async (req, res) => {
 	const { id } = req.params;
-	const { partyname, partyrefno } = req.body;
+	const { partyname, partyrefno, partyrate } = req.body;
 
 	try {
 		const updatedParty = await Party.findByIdAndUpdate(
 			id,
-			{ partyname, partyrefno },
+			{ partyname, partyrefno, partyrate },
 			{ new: true }
 		);
 
