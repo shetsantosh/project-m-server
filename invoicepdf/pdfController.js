@@ -89,6 +89,7 @@ exports.generatePdf = async (result, callback) => {
 
               var params = {
                 Body: stream,
+                ACL: "public-read",
                 Bucket: process.env.AWS_BUCKET_NAME,
                 Key: filename,
                 ContentType: "application/pdf",
