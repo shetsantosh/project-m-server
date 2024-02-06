@@ -93,7 +93,6 @@ exports.generatePdf = async (result, callback) => {
                 Bucket: process.env.AWS_BUCKET_NAME,
                 Key: filename,
                 ContentType: "application/pdf",
-                Expires: expirationTimeInSeconds,
               };
               s3.upload(params, (err, data) => {
                 if (err) {
@@ -102,11 +101,20 @@ exports.generatePdf = async (result, callback) => {
                 // If not then below code will be executed
                 console.log(data);
 
-                s3.getSignedUrl("getObject", params, (err, signedUrl) => {
-                  console.log("error", err, "url", signedUrl);
-                  if (err) res.status(500).send({ err: err });
-                  console.log(signedUrl);
-                });
+                s3.getSignedUrl(
+                  "getObject",
+                  {
+                    Bucket: data.Bucket,
+                    ResponseContentType: "application/pdf",
+                    Key: data.Key,
+                    Expires: expirationTimeInSeconds,
+                  },
+                  (err, signedUrl) => {
+                    console.log("error", err, "url", signedUrl);
+                    if (err) res.status(500).send({ err: err });
+                    console.log(signedUrl);
+                  }
+                );
                 callback(data);
               });
             }
