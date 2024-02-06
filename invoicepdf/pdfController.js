@@ -11,10 +11,9 @@ const moment = require("moment");
 const commaNumber = require("comma-number");
 const { ToWords } = require("to-words");
 var AWS = require("aws-sdk");
-// var s3 = new AWS.S3({
-//   signatureVersion: "v4",
-// });
-var s3 = new AWS.S3();
+var s3 = new AWS.S3({
+  signatureVersion: "v4",
+});
 
 app.use(express.static("public"));
 
@@ -104,6 +103,7 @@ exports.generatePdf = async (result, callback) => {
                 console.log(data);
 
                 s3.getSignedUrl("getObject", params, (err, signedUrl) => {
+                  console.log("error", err, "url", signedUrl);
                   if (err) res.status(500).send({ err: err });
                   console.log(signedUrl);
                 });
