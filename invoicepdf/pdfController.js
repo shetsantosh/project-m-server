@@ -107,9 +107,6 @@ exports.generatePdf = async (result, callback) => {
                   "getObject",
                   params,
                   (err, signedUrl) => {
-                    if (err) {
-                      res.status(500).send({ err: err }); // if we get any error while getting signed URL, error message will be returned.
-                    }
                     console.log(signedUrl);
                   }
                 );
