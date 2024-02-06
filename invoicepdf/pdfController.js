@@ -11,11 +11,15 @@ const moment = require("moment");
 const commaNumber = require("comma-number");
 const { ToWords } = require("to-words");
 var AWS = require("aws-sdk");
+// var s3 = new AWS.S3({
+//   signatureVersion: "v4",
+// });
+var s3 = new AWS.S3();
 
 app.use(express.static("public"));
 
 var API = `https://www.thegapindustries.com/`;
-
+const expirationTimeInSeconds = 60; // Expiration time in seconds (1 hour in this example)
 const toWords = new ToWords({
   localeCode: "en-IN",
   converterOptions: {
@@ -84,14 +88,13 @@ exports.generatePdf = async (result, callback) => {
                 secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
               });
 
-              var s3 = new AWS.S3();
-
               var params = {
                 Body: stream,
                 ACL: "public-read",
                 Bucket: process.env.AWS_BUCKET_NAME,
                 Key: filename,
                 ContentType: "application/pdf",
+                Expires: expirationTimeInSeconds,
               };
               s3.upload(params, (err, data) => {
                 if (err) {
@@ -99,6 +102,17 @@ exports.generatePdf = async (result, callback) => {
                 }
                 // If not then below code will be executed
                 console.log(data);
+
+                s3.getSignedUrlPromise(
+                  "getObject",
+                  params,
+                  (err, signedUrl) => {
+                    if (err) {
+                      res.status(500).send({ err: err }); // if we get any error while getting signed URL, error message will be returned.
+                    }
+                    console.log(signedUrl);
+                  }
+                );
                 callback(data);
               });
             }
