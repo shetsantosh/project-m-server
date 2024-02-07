@@ -99,8 +99,6 @@ exports.generatePdf = async (result, callback) => {
                 if (err) {
                   res.status(500).send({ err: err }); // if we get any error while uploading, error message will be returned.
                 }
-                // If not then below code will be executed
-                console.log(data);
                 responseObject.pdfUrl = data.Location;
 
                 // Set the source and destination bucket and object key
@@ -138,11 +136,11 @@ exports.generatePdf = async (result, callback) => {
                     );
                   }
                 });
-                callback(responseObject);
               });
             }
-            // })
           });
+          console.log("responseObject" + responseObject);
+          callback(responseObject);
         } else {
           return console.error("An error occurred during render ejs:", err);
         }
