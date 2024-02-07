@@ -45,7 +45,7 @@ exports.generatePdf = async (result, callback) => {
   const logoLocation = `./public/logo/logo.jpg`;
   const publicFolder = path.join(__dirname, "..");
   const logoPath = path.join(publicFolder, logoLocation);
-  var responseObject;
+  const responseObject = {};
 
   try {
     // Generate QR code and get base64 string
