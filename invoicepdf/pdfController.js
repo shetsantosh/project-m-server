@@ -117,21 +117,22 @@ exports.generatePdf = async (result, callback) => {
                 s3.copyObject(copyParams, (err, data) => {
                   if (err) {
                     console.error("Error copying object:", err);
+                    res.status(500).send({ err: err });
                   } else {
-                    console.log("Object copied successfully:", data);
+                    s3.getSignedUrl(
+                      "getObject",
+                      {
+                        Bucket: destinationBucket,
+                        Key: destinationObjectKey,
+                        Expires: expirationTimeInSeconds,
+                        ResponseContentDisposition: "inline",
+                      },
+                      (err, signedUrl) => {
+                        console.log("error", err, "url", signedUrl);
+                        if (err) res.status(500).send({ err: err });
+                      }
+                    );
                   }
-                  s3.getSignedUrl(
-                    "getObject",
-                    {
-                      Bucket: destinationBucket,
-                      Key: destinationObjectKey,
-                      Expires: expirationTimeInSeconds,
-                    },
-                    (err, signedUrl) => {
-                      console.log("error", err, "url", signedUrl);
-                      if (err) res.status(500).send({ err: err });
-                    }
-                  );
                 });
                 callback(data);
               });
