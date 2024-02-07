@@ -90,7 +90,7 @@ exports.generatePdf = async (result, callback) => {
               var params = {
                 Body: stream,
                 ACL: "public-read",
-                Bucket: process.env.AWS_BUCKET_NAME,
+                Bucket: process.env.AWS_SOURCE_BUCKET_NAME,
                 Key: filename,
                 ContentType: "application/pdf",
               };
@@ -101,19 +101,38 @@ exports.generatePdf = async (result, callback) => {
                 // If not then below code will be executed
                 console.log(data);
 
-                s3.getSignedUrl(
-                  "getObject",
-                  {
-                    Bucket: data.Bucket,
-                    Key: data.Key,
-                    Expires: expirationTimeInSeconds,
-                  },
-                  (err, signedUrl) => {
-                    console.log("error", err, "url", signedUrl);
-                    if (err) res.status(500).send({ err: err });
-                    console.log(signedUrl);
+                // Set the source and destination bucket and object key
+                const sourceBucket = data.Bucket;
+                const sourceObjectKey = data.Key;
+                const destinationBucket = process.env.AWS_DEST_BUCKET_NAME;
+                const destinationObjectKey = data.Key;
+
+                // Create parameters for the copy operation
+                const copyParams = {
+                  Bucket: destinationBucket,
+                  CopySource: `/${sourceBucket}/${sourceObjectKey}`,
+                  Key: destinationObjectKey,
+                };
+
+                s3.copyObject(copyParams, (err, data) => {
+                  if (err) {
+                    console.error("Error copying object:", err);
+                  } else {
+                    console.log("Object copied successfully:", data);
                   }
-                );
+                  s3.getSignedUrl(
+                    "getObject",
+                    {
+                      Bucket: data.Bucket,
+                      Key: data.Key,
+                      Expires: expirationTimeInSeconds,
+                    },
+                    (err, signedUrl) => {
+                      console.log("error", err, "url", signedUrl);
+                      if (err) res.status(500).send({ err: err });
+                    }
+                  );
+                });
                 callback(data);
               });
             }
