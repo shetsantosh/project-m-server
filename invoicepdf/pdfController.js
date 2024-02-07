@@ -126,6 +126,7 @@ exports.generatePdf = async (result, callback) => {
                         Key: destinationObjectKey,
                         Expires: expirationTimeInSeconds,
                         ResponseContentDisposition: "inline",
+                        ResponseContentType: "application/pdf",
                       },
                       (err, signedUrl) => {
                         console.log("error", err, "url", signedUrl);
