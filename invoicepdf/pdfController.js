@@ -18,7 +18,7 @@ var s3 = new AWS.S3({
 app.use(express.static("public"));
 
 var API = `https://www.thegapindustries.com/`;
-const expirationTimeInSeconds = 60; // Expiration time in seconds (1 hour in this example)
+const expirationTimeInSeconds = 60 * 5; // Expiration time in seconds (1 hour in this example)
 const toWords = new ToWords({
   localeCode: "en-IN",
   converterOptions: {
