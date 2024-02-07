@@ -123,8 +123,8 @@ exports.generatePdf = async (result, callback) => {
                   s3.getSignedUrl(
                     "getObject",
                     {
-                      Bucket: data.Bucket,
-                      Key: data.Key,
+                      Bucket: destinationBucket,
+                      Key: destinationObjectKey,
                       Expires: expirationTimeInSeconds,
                     },
                     (err, signedUrl) => {
