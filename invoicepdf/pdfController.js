@@ -45,6 +45,7 @@ exports.generatePdf = async (result, callback) => {
   const logoLocation = `./public/logo/logo.jpg`;
   const publicFolder = path.join(__dirname, "..");
   const logoPath = path.join(publicFolder, logoLocation);
+  var responseObject;
 
   try {
     // Generate QR code and get base64 string
@@ -100,6 +101,7 @@ exports.generatePdf = async (result, callback) => {
                 }
                 // If not then below code will be executed
                 console.log(data);
+                responseObject.pdfUrl = data.Location;
 
                 // Set the source and destination bucket and object key
                 const sourceBucket = data.Bucket;
@@ -131,11 +133,12 @@ exports.generatePdf = async (result, callback) => {
                       (err, signedUrl) => {
                         console.log("error", err, "url", signedUrl);
                         if (err) res.status(500).send({ err: err });
+                        responseObject.preSignedUrl = signedUrl;
                       }
                     );
                   }
                 });
-                callback(data);
+                callback(responseObject);
               });
             }
             // })
