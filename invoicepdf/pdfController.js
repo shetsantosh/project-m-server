@@ -137,10 +137,10 @@ exports.generatePdf = async (result, callback) => {
                   }
                 });
               });
+              console.log("responseObject" + responseObject);
+              callback(responseObject);
             }
           });
-          console.log("responseObject" + responseObject);
-          callback(responseObject);
         } else {
           return console.error("An error occurred during render ejs:", err);
         }
