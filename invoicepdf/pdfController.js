@@ -132,7 +132,6 @@ exports.generatePdf = async (result, callback) => {
                         console.log("error", err, "url", signedUrl);
                         if (err) res.status(500).send({ err: err });
                         responseObject.preSignedUrl = signedUrl;
-                        console.log("responseObject" + responseObject);
                         callback(responseObject);
                       }
                     );

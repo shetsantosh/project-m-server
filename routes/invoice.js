@@ -57,7 +57,6 @@ router.post("/", async (req, res) => {
 
     // Generate PDF and update S3 URL
     await custom.generatePdf(savedInvoice, async (data) => {
-      console.log("Create invoice:", data);
       savedInvoice.pdfUrl = data.pdfUrl;
       savedInvoice.preSignedUrl = data.preSignedUrl;
       await savedInvoice
@@ -82,7 +81,6 @@ router.put("/:id", async (req, res) => {
   try {
     // Generate PDF and update S3 URL
     await custom.generatePdf(updatedInvoiceData, async (data) => {
-      console.log("Update invoice:", data);
       updatedInvoiceData.pdfUrl = data.pdfUrl;
       updatedInvoiceData.preSignedUrl = data.preSignedUrl;
     });
