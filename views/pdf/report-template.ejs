@@ -227,7 +227,7 @@
             }
 
             .line-text {
-                font-size: 8px;
+                font-size: 7px;
                 margin-top: 5px;
             }
 
@@ -305,8 +305,9 @@
                 </p>
             </div>
             <div class="line-text">
-                <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %> &nbsp;&nbsp; <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %> &nbsp;&nbsp; <b>Load From </b> : <%=
-                invoiceData.loadingdetails.startpoint %>&nbsp;<b> To </b> :&nbsp;&nbsp; <b>Ref.</b> : <%= invoiceData.boardingdetails.partyref %>
+                <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %> &nbsp;&nbsp; <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %> &nbsp; <b>Load From </b> : <%=
+                invoiceData.loadingdetails.startpoint %>&nbsp;<b> To </b> :<%=
+                invoiceData.loadingdetails.endpoint %>&nbsp; <b>Ref.</b> : <%= invoiceData.boardingdetails.partyref %>
             </div>
             <br />
             <table class="table01" style="font-size: 10px; border: 1px solid black;">
