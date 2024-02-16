@@ -5,3 +5,4 @@ node_modules/
 notes.md
 .env.local
 .DS_Store
+.env
