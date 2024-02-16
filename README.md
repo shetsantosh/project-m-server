@@ -1,8 +1,8 @@
 How to run?
 <ol>
   <li> Clone the repository</li>
-2.  Go to the folder project-m-server
-3. Run "npm start" from the command line
+<li>Go to the folder project-m-server</li>
+<li>Run "npm start" from the command line</li>
 </ol>
 
 
