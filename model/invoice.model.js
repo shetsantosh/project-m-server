@@ -59,14 +59,8 @@ const invoiceSchema = new mongoose.Schema({
 				return `${currentYear}${counter + 1}`.padStart(9, '0'); // Generate invoice number with leading zeros
 			},
 		},
-		invoicedate: {
-			type: Date,
-			default: Date.now,
-		},
-		invoicecreatedate: {
-			type: Date,
-			default: Date.now,
-		},
+		invoicedate: Date,
+		invoicecreatedate: Date,
 		invoicemakername: String,
 		invoiceid: String,
 	},
