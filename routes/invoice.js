@@ -17,6 +17,23 @@ router.get('/', async (req, res) => {
 		res.status(500).json({ error: 'Error retrieving invoices' });
 	}
 });
+// GET: Retrieve an invoice by ID
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const invoice = await Invoice.findById(id);
+
+        if (!invoice) {
+            return res.status(404).json({ error: 'Invoice not found' });
+        }
+
+        res.json(invoice);
+    } catch (err) {
+        console.error('Error finding invoice:', err);
+        res.status(500).json({ error: 'Error finding invoice' });
+    }
+});
 
 // POST: Create a new invoice
 router.post('/', async (req, res) => {
